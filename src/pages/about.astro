@@ -1,5 +1,24 @@
 ---
+import '../styles/global.css';
 
+const pageTitle = "About the project";
+
+const identity = {
+  firstName: 'Oleksandr',
+  country: 'Ukraine',
+  hobbies: ["sci-fI", "music", "walking"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro"];
+
+const happy = true;
+const finished = false;
+
+const styles = {
+  skillColor: 'navy',
+  fontWeight: 'bold',
+  // textCase: 
+};
 ---
 
 <html lang="en">
@@ -8,7 +27,18 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
+    <style define:vars={{ skillColor: styles.skillColor, fontWeight: styles.fontWeight }}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: uppercase
+      }
+    </style>
 	</head>
 	<body>
     <nav>
@@ -16,8 +46,22 @@
       <a href="/about">About</a>
       <a href="/blog">Blog</a>
     </nav>
-		<h1>About the project</h1>
+		<h1>{pageTitle}</h1>
     <p>This is tutorial blog project build with Astro and deployed on Netlify</p>
     <a href="https://frolicking-entremet-bf864d.netlify.app/">Check it here.</a>
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>My name is {identity.firstName}.</li>
+      <li>I live in {identity.country}.</li>
+      {identity.hobbies.length >=2 &&
+        <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}.</li>
+      }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {skills.map(skill => <li class="skill">{skill}</li>)}
+    </ul>
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I finished this tutorial!</p>}
 	</body>
 </html>
