@@ -1,4 +1,6 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const pageTitle = "About the project";
@@ -41,11 +43,7 @@ const styles = {
     </style>
 	</head>
 	<body>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about">About</a>
-      <a href="/blog">Blog</a>
-    </nav>
+    <Header />
 		<h1>{pageTitle}</h1>
     <p>This is tutorial blog project build with Astro and deployed on Netlify</p>
     <a href="https://frolicking-entremet-bf864d.netlify.app/">Check it here.</a>
@@ -63,5 +61,9 @@ const styles = {
     </ul>
     {happy && <p>I am happy to be learning Astro!</p>}
     {finished && <p>I finished this tutorial!</p>}
+    <Footer />
+    <script>
+			import '../scripts/menu.js';
+		</script>
 	</body>
 </html>
