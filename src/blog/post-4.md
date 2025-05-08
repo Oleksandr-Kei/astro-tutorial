@@ -7,7 +7,6 @@ image:
     alt: "The word astro against an illustration of planets and stars."
 pubDate: 2022-08-08
 tags: ["astro", "successes"]
-layout: ../../layouts/MarkdownPostLayout.astro
 ---
 
 This post should show up with my other blog posts, because `import.meta.glob()`

@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostLinks from '../components/PostLinks.astro';
+import { getCollection } from 'astro:content';
 
-const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+const allPosts = await getCollection('blog');
 ---
 
 <BaseLayout title="Blog">

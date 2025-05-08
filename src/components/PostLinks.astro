@@ -1,13 +1,13 @@
 ---
-import type { Post } from '../types';
-
-const posts = Astro.props.posts as Post[];
+import type { DataEntryMap } from 'astro:content';
+type ValueOf<T> = T[keyof T];
+const posts = Astro.props.posts as ValueOf<DataEntryMap['blog']>[];
 ---
 
 <ul>
   {posts.map(post => (
     <li>
-      <a href={post.url}>{post.frontmatter.title}</a>
+      <a href={`/posts/${post.id}`}>{post.data.title}</a>
     </li>
   ))}
 </ul>

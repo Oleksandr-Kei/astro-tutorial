@@ -1,17 +1,17 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostLinks from '../../components/PostLinks.astro';
-import type { Post } from '../../types';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true })) as Post[];
+  const allPosts = await getCollection('blog');
 
   const tagsSet = new Set(
-    allPosts.map(post => post.frontmatter.tags).flat(),
+    allPosts.map(post => post.data.tags).flat(),
   );
 
   return [...tagsSet].map(tag => {
-    const filteredPosts = allPosts.filter(post => post.frontmatter.tags.includes(tag));
+    const filteredPosts = allPosts.filter(post => post.data.tags.includes(tag));
     return {
       params: { tag },
       props: {
