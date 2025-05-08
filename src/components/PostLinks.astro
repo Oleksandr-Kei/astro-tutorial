@@ -1,0 +1,29 @@
+---
+type PostFrontmatter = {
+  title: string,
+  author: string,
+  description: string,
+  image: {
+    url: string,
+    alt: string,
+  },
+  pubDate: string,
+  tags: string[],
+  layout: string,
+};
+
+type Post = {
+  url: string,
+  frontmatter: PostFrontmatter,
+};
+
+const posts = Astro.props.posts as Post[];
+---
+
+<ul>
+  {posts.map(post => (
+    <li>
+      <a href={post.url}>{post.frontmatter.title}</a>
+    </li>
+  ))}
+</ul>
