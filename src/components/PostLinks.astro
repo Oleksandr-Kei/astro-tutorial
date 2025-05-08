@@ -1,21 +1,5 @@
 ---
-type PostFrontmatter = {
-  title: string,
-  author: string,
-  description: string,
-  image: {
-    url: string,
-    alt: string,
-  },
-  pubDate: string,
-  tags: string[],
-  layout: string,
-};
-
-type Post = {
-  url: string,
-  frontmatter: PostFrontmatter,
-};
+import type { Post } from '../types';
 
 const posts = Astro.props.posts as Post[];
 ---
